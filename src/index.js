@@ -11,6 +11,7 @@ import './assets/scss/main.scss';
 import { SingleCharacter } from './pages/SingleCharacter/SingleCharacter';
 import { SingleDiary } from './pages/SingleDiary/SingleDiary';
 import { MainPage } from './pages/Main/MainPage';
+import { Blog } from './pages/Blog/Blog';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -18,6 +19,7 @@ root.render(
     <Main>
       <Routes>
         <Route path="/" element={<MainPage/>} />
+        <Route path="/blog" element={<Blog/>} />
         <Route path="/character" element={<SingleCharacter />} />
         <Route path="/diary" element={<SingleDiary />} />
       </Routes>

@@ -13,7 +13,7 @@ a{
     color:#000;
     font-weight: 700; 
 }
-&:hover a{
+&:hover a{ 
     color:#9F0013;
 }
 a{
@@ -29,6 +29,9 @@ const Nav = () => {
             <List>
                 <ListItem>
                     <Link to="/">Home</Link>
+                </ListItem>
+                <ListItem>
+                    <Link to="/blog">Blog</Link>
                 </ListItem>
                 <ListItem>
                     <Link to="/character">Characters</Link>
