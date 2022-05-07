@@ -28,7 +28,7 @@ const dataCharacter = [
         name:"ABYSS"
     },
     {
-        id:5,
+        id:6,
         img:"item.jpg",
         name:"ABYSS"
     },
