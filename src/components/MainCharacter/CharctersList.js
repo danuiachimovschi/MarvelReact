@@ -9,8 +9,8 @@ justify-content: space-between;
 align-items:center;
 `
 const CharactersList = ({items}) => {
-    const itemsChars = items.map(({id, name, img}) => {
-        return <CharacterItemList key={id} name={name} img={img} />;
+    const itemsChars = items.map(({id, name, thumbnail}) => {
+        return <CharacterItemList key={id} name={name} img={thumbnail} />;
     });
     return ( 
         <ListInner>

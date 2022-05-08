@@ -12,13 +12,17 @@ transition:border .7s ease;
 }
 `;
 
+const ImgChar = styled.img`
+width:200px;
+height:200px;
+`;
 
 
 const CharacterItemList = ({name, img}) => {
-    const srcImg = "/img/items/" + img;
+    const srcImg = img.path + "." + img.extension;
     return ( 
         <ItemCharBox>
-            <img src={srcImg} alt='img' />
+            <ImgChar src={srcImg} alt='name' />
             <ItemCharName>
                 {name}
             </ItemCharName>

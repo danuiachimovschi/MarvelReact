@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { FlexBox } from './../../assets/helper';
 import Button from './../Global/Buttons/Button';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const RandomLeftBlock = styled(FlexBox)`
 padding: 40px;
@@ -36,18 +38,30 @@ justify-content: start;
 margin-top:20px;
 `
 
-const Randomleft = () => {
+export default function Randomleft(){
+    const [randomChar, setRandomChar] = useState([]);
+    const [pathImg, setPathImg] = useState('');
+
+    useEffect(() => {
+        const randomNbr = Math.floor(Math.random() * (1011400 - 1011000)) + 1011000;
+        axios.get(`https://gateway.marvel.com:443/v1/public/characters/${randomNbr}?apikey=35b64f4deec0e359531e5d77cb231508`)
+                        .then(res => {
+                            setRandomChar(res.data.data.results[0]);
+                            setPathImg(res.data.data.results[0].thumbnail.path + '.' + res.data.data.results[0].thumbnail.extension);
+                        });
+    },[]);
+
     return ( 
         <RandomLeftBlock>
             <div>
-                <ImgRandomMarvel src='/img/random.jpg'/>
+                <ImgRandomMarvel src={pathImg} />
             </div>
             <RandomBoxInfo>
                 <RandomName>
-                    THOR
+                    {randomChar.name} 
                 </RandomName>
                 <RandomDescription>
-                     As the Norse God of thunder and lightning, Thor wields one of the greatest weapons ever made, the enchanted hammer Mjolnir. While others have described Thor as an over-muscled, oafish imbecile, he's quite smart and compassionate...
+                    {randomChar.description}
                 </RandomDescription>
                 <RandomButtons>
                     <Button color="#9F0013">
@@ -61,5 +75,3 @@ const Randomleft = () => {
         </RandomLeftBlock>
     );
 }
- 
-export default Randomleft;
