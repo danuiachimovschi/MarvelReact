@@ -16,7 +16,7 @@ font-weight: 700;
 margin-bottom:${props => props.space };
 `
 
-const RandomRight = () => {
+const RandomRight = ({tryRandomChar}) => {
     const textData = [
         {
             text:"Random character for today!",
@@ -34,10 +34,11 @@ const RandomRight = () => {
     const textItems = textData.map(({text, space}, index) => {
         return <TextItem key={index} space={space}>{text}</TextItem>
     });
+
     return ( 
         <RnadomRightInner>
             {textItems}
-            <Button color={"#9F0013"}>
+            <Button color={"#9F0013"} tryRandomChar={tryRandomChar}>
                 TRY IT!
             </Button>
         </RnadomRightInner>

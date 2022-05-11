@@ -9,8 +9,11 @@ border:none;
 color:#fff;
 `
 
-const Button = ({color, children}) => {
-    return <ButtonItem color={color} type='button'>{children}</ButtonItem>;
+const Button = ({color, children,tryRandomChar}) => {
+    if(tryRandomChar){
+        return <ButtonItem  onClick={(e) => tryRandomChar(e)} color={color} type='button'>{children}</ButtonItem>;
+    }
+    return <ButtonItem  color={color} type='button'>{children}</ButtonItem>;
 }
  
 export default Button;

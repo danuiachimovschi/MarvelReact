@@ -3,6 +3,7 @@ import { FlexBox } from './../../assets/helper';
 import Button from './../Global/Buttons/Button';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import Spinner from './../spinner/Spinner';
 
 const RandomLeftBlock = styled(FlexBox)`
 padding: 40px;
@@ -37,31 +38,29 @@ const RandomButtons = styled(FlexBox)`
 justify-content: start;
 margin-top:20px;
 `
-
-export default function Randomleft(){
-    const [randomChar, setRandomChar] = useState([]);
-    const [pathImg, setPathImg] = useState('');
-
-    useEffect(() => {
-        const randomNbr = Math.floor(Math.random() * (1011400 - 1011000)) + 1011000;
-        axios.get(`https://gateway.marvel.com:443/v1/public/characters/${randomNbr}?apikey=35b64f4deec0e359531e5d77cb231508`)
-                        .then(res => {
-                            setRandomChar(res.data.data.results[0]);
-                            setPathImg(res.data.data.results[0].thumbnail.path + '.' + res.data.data.results[0].thumbnail.extension);
-                        });
-    },[]);
-
+export default function Randomleft({error, loading, randomChar, pathImg}){
+    const result = error ?
+                    loading ? <Spinner/> : <Char name={randomChar.name} img={pathImg} desc={randomChar.description}/> 
+                    : <Char name={"user 404"} img={"path 404"} desc={"desc 404"}/>;
     return ( 
         <RandomLeftBlock>
+            { result } 
+        </RandomLeftBlock>
+    );
+}
+
+const Char = ({img, name , desc}) => {
+    return (
+        <>
             <div>
-                <ImgRandomMarvel src={pathImg} />
+                <ImgRandomMarvel src={img} />
             </div>
             <RandomBoxInfo>
                 <RandomName>
-                    {randomChar.name} 
+                    {name} 
                 </RandomName>
                 <RandomDescription>
-                    {randomChar.description}
+                    {desc}
                 </RandomDescription>
                 <RandomButtons>
                     <Button color="#9F0013">
@@ -72,6 +71,6 @@ export default function Randomleft(){
                     </Button>
                 </RandomButtons>
             </RandomBoxInfo>
-        </RandomLeftBlock>
-    );
+        </>
+    )
 }
