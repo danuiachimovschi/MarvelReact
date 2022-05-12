@@ -18,10 +18,10 @@ height:200px;
 `;
 
 
-const CharacterItemList = ({name, img}) => {
+const CharacterItemList = ({id, name, img,getClcikChar}) => {
     const srcImg = img.path + "." + img.extension;
     return ( 
-        <ItemCharBox>
+        <ItemCharBox onClick={(e) => getClcikChar(e, id)}>
             <ImgChar src={srcImg} alt='name' />
             <ItemCharName>
                 {name}

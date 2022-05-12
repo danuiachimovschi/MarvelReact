@@ -18,12 +18,11 @@ margin:15px 0px;
 `;
 
 const AsideCharBox = ({dataChar}) => {
-    const {id,  img, name,description, comics } = dataChar;
-    const srcImg = "/img/items/" + img;
+    const {id, thumbnail, name, description, comics } = dataChar;
     return ( 
         <div key={id}>
             <CharInfoAside>
-                    <ImgBoxChar src={srcImg} alt={name} />
+                    <ImgBoxChar src={thumbnail.path + '.' + thumbnail.extension} alt={name} />
                     <div>
                         <ItemCharName black>{name}</ItemCharName>
                         <div>
@@ -39,7 +38,7 @@ const AsideCharBox = ({dataChar}) => {
             <CharDescription>
                 {description}
             </CharDescription>
-            <CharacterComics comics={comics} />
+            <CharacterComics comics={comics.items} />
         </div> 
     );
 }

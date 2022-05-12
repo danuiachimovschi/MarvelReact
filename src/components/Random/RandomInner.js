@@ -13,6 +13,7 @@ const RandomInner = () => {
 
     function getRandom(){
         const randomNbr = Math.floor(Math.random() * (1011400 - 1011000)) + 1011000;
+        setError(true);
         axios.get(`https://gateway.marvel.com:443/v1/public/characters/${randomNbr}?apikey=35b64f4deec0e359531e5d77cb231508`)
                         .then(res => {
                             setRandomChar(res.data.data.results[0]);
@@ -22,6 +23,7 @@ const RandomInner = () => {
                             setError(!error);
                         });
     }
+    
     useEffect(() => {
         getRandom();
     },[]);
@@ -34,7 +36,7 @@ const RandomInner = () => {
     
     return ( 
         <FlexBox>
-            <Randomleft randomChar={randomChar} pathImg={pathImg} error={error} loading={loading} />
+            <Randomleft update={update} randomChar={randomChar} pathImg={pathImg} error={error} loading={loading} />
             <RandomRight tryRandomChar={tryRandomChar}/>
         </FlexBox>
      );
