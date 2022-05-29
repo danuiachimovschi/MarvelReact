@@ -1,6 +1,7 @@
 
 import styled from 'styled-components';
 
+
 const ButtonItem = styled.button`
 padding:10px;
 background-color:${props => props.color ?? '#5C5C5C'};
@@ -15,5 +16,5 @@ const Button = ({color, children,tryRandomChar}) => {
     }
     return <ButtonItem  color={color} type='button'>{children}</ButtonItem>;
 }
- 
+
 export default Button;

@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const RandomInner = () => {
-    const [update, setUpdate] = useState(false);
+    const [update] = useState(false);
     const [randomChar, setRandomChar] = useState([]);
     const [pathImg, setPathImg] = useState('');
     const [loading, setLoading] = useState(true);

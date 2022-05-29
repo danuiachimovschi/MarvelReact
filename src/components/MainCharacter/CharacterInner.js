@@ -9,7 +9,7 @@ const CharsIner = styled(FlexBox)`
 margin-top:20px;
 `;
 
-const CharacterInner = ({items}) => {
+const CharacterInner = ({items,getMoreChars}) => {
     const [charsData, setCharsData] = useState(false);
     const [error, setError] = useState(false);
     const [loading, setloading] = useState(false);
@@ -25,7 +25,7 @@ const CharacterInner = ({items}) => {
     }
     return ( 
         <CharsIner>
-            <CharactersList getClcikChar={getClcikChar} items={items} />    
+            <CharactersList getClcikChar={getClcikChar} items={items} getMoreChars={getMoreChars} />    
             <AsideCharacter error={error} loading={loading} charsData={charsData}/>
         </CharsIner>
     );
